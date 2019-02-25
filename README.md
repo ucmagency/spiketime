@@ -1,7 +1,7 @@
-# Settings with their default value
-REDIS_HOST: "localhost"
-REDIS_PORT: "6379"
-REDIS_DB: "5"
+# ENVs and their default fallbacks
+* REDIS_HOST: "localhost"
+* REDIS_PORT: "6379"
+* REDIS_DB: "5"
 
 # Errors
 * Will raise `SpiketimeNetHTTPSError` returning the HTTP status code unless it is `200 OK`.
