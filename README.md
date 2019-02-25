@@ -44,7 +44,13 @@ gem install spiketime-0.0.1.gem
 ```
 
 # usage
-* get all holidays for one state for one year: `holidays = Spiketime.new(state: 'BE').get_holidays('2019')` which will return an array:
+* get all holidays for one state for one year:
+```ruby
+holidays = Spiketime.new(state: 'BE').get_holidays('2019')
+```
+
+which will return an array:
+
 ```json-inline
 [
   '2019-01-01',
@@ -60,6 +66,7 @@ gem install spiketime-0.0.1.gem
   '2019-12-26'
 ]
 ```
+
 * check if one particular day is a holiday in a given state:
 ```ruby
 holiday = Spiketime.new(state: 'Berlin').holiday?('2019-04-19')
