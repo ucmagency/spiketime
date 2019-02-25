@@ -36,7 +36,7 @@ class Spiketime
     raise SpiketimeUnsupportedStateError, state unless STATE_CODES.keys.include?(state)
 
     @redis = setup_redis
-    @http  = establish_https_connection
+    @https = establish_https_connection
     @force = force
     @state = state
   end
@@ -51,7 +51,7 @@ class Spiketime
 
     # store in format `YYYY-MM-DD`
     holidays = Oj.load(response.body).map do |holiday|
-      holiday.symbolize_keys[:Datum].split('T').first
+      holiday['Datum'].split('T').first
     end
     cache_holidays(state, year, holidays)
 
@@ -66,21 +66,23 @@ class Spiketime
 
   private
 
-  attr_reader :http, :redis, :force, :state
+  attr_reader :https, :redis, :force, :state
 
   def setup_redis
-    Redis.new(host: redis_host, port: redis_port, db: redis_db)
+    Redis.new(host: Spiketime.configuration.redis_host,
+              port: Spiketime.configuration.redis_port,
+              db: Spiketime.configuration.redis_db)
   end
 
   def establish_https_connection
-    http = Net::HTTP.new('https://www.spiketime.de', 433)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_PEER
-    http
+    https = Net::HTTP.new('https://www.spiketime.de', 433)
+    https.use_ssl = true
+    https.verify_mode = OpenSSL::SSL::VERIFY_PEER
+    https
   end
 
   def get(path)
-    http.request(Net::HTTP::Get.new(path))
+    https.request(Net::HTTP::Get.new(path))
   end
 
   def get_cached_holidays(state, year)

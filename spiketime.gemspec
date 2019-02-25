@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email         = ['info@ucastme.de']
   s.summary       = 'Simple wrapper around spiketime API, which provides german holidays'
   s.description   = 'Simple wrapper around spiketime API, which provides german holidays'
-  s.homepage      = ''
+  s.homepage      = 'https://ucastme.de'
   s.license       = 'MIT'
 
   s.files         = Dir['lib/**/*.rb', 'spec/**/*']
