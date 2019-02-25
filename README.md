@@ -1,11 +1,22 @@
-# ENVs and their default fallbacks
-* REDIS_HOST: "localhost"
-* REDIS_PORT: "6379"
-* REDIS_DB: "5"
+# General Description
+This gem is light weight wrapper around the [spiketime API](https://www.spiketime.de/blog/spiketime-feiertag-api-feiertage-nach-bundeslandern/). It also offers a [postman collection](https://www.getpostman.com/collections/16ba518999fbcff4c02c).
 
-# Errors
+# Dependencies
+* `oj` for parsing JSON
+* `redis` for caching
+
+# ENVs and their default fallbacks
+* REDIS_HOST: `localhost`
+* REDIS_PORT: `6379`
+* REDIS_DB: `5`
+
+# Usage
+
+## Errors
 * Will raise `SpiketimeNetHTTPSError` returning the HTTP status code unless it is `200 OK`.
 * Will raise `SpiketimeUnsupportedStateError` if the `state` is not given using the official abbreviation
+
+## state codes
 
 | abbreviation | state name |
 | ------------ | ---------- |
@@ -26,32 +37,12 @@
 |      SH      | Schleswig-Holstein |
 |      TH      | Thüringen |
 
-# functionality:
-* returns all holidays for one state of germany
-* checks if a given day is a holiday for a given state (returning `true`/`false`)
-
-
-# Implemented API
-* https://www.spiketime.de/blog/spiketime-feiertag-api-feiertage-nach-bundeslandern/
-* public postman collection: https://www.getpostman.com/collections/16ba518999fbcff4c02c
-
-
-# build & install GEM locally
-if previously built, remove gem file: `rm spiketime-0.0.1.gem`
-```
-gem build spiketime.gemspec
-gem install spiketime-0.0.1.gem
-```
-
-# usage
-* get all holidays for one state for one year:
+## API
+* get all holidays for one state for a given year:
 ```ruby
 holidays = Spiketime.new(state: 'BE').get_holidays('2019')
-```
 
-which will return an array:
-
-```json-inline
+# returns an array
 [
   '2019-01-01',
   '2019-04-19',
@@ -67,8 +58,17 @@ which will return an array:
 ]
 ```
 
-* check if one particular day is a holiday in a given state:
+* check if one particular day is a holiday for a given state:
 ```ruby
 holiday = Spiketime.new(state: 'Berlin').holiday?('2019-04-19')
+
+# returns a boolean
+true
 ```
-which will return a boolean.
+
+# build & install GEM locally
+if previously built, remove gem file: `rm spiketime-0.0.1.gem`
+```
+gem build spiketime.gemspec
+gem install spiketime-0.0.1.gem
+```
