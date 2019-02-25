@@ -60,7 +60,7 @@ holidays = Spiketime.new(state: 'BE').get_holidays('2019')
 
 * check if one particular day is a holiday for a given state:
 ```ruby
-holiday = Spiketime.new(state: 'Berlin').holiday?('2019-04-19')
+holiday = Spiketime.new(state: 'BE').holiday?('2019-04-19')
 
 # returns a boolean
 true
