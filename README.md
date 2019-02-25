@@ -60,4 +60,8 @@ gem install spiketime-0.0.1.gem
   '2019-12-26'
 ]
 ```
-* check if one particular day is a holiday in a given state: `holiday = Spiketime.new(state: 'Berlin').holiday?('2019-04-19')` which will return a boolean
+* check if one particular day is a holiday in a given state:
+```ruby
+holiday = Spiketime.new(state: 'Berlin').holiday?('2019-04-19')
+```
+which will return a boolean.
