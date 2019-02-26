@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/ucmagency/spiketime.svg?style=svg)](https://circleci.com/gh/ucmagency/spiketime)
+build: [![CircleCI](https://circleci.com/gh/ucmagency/spiketime.svg?style=svg&circle-token=12ece3bd3bf7c5df2ebaaaa5b0058d903c4bd138)](https://circleci.com/gh/ucmagency/spiketime)
 
 # General Description
 This gem is just a small wrapper around the [spiketime API](https://www.spiketime.de/blog/spiketime-feiertag-api-feiertage-nach-bundeslandern/). It also offers a [postman collection](https://www.getpostman.com/collections/16ba518999fbcff4c02c).
