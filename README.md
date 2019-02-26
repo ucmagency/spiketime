@@ -1,9 +1,10 @@
 # General Description
-This gem is light weight wrapper around the [spiketime API](https://www.spiketime.de/blog/spiketime-feiertag-api-feiertage-nach-bundeslandern/). It also offers a [postman collection](https://www.getpostman.com/collections/16ba518999fbcff4c02c).
+This gem is just a small wrapper around the [spiketime API](https://www.spiketime.de/blog/spiketime-feiertag-api-feiertage-nach-bundeslandern/). It also offers a [postman collection](https://www.getpostman.com/collections/16ba518999fbcff4c02c).
 
 # Dependencies
 * `oj` for parsing JSON
 * `redis` for caching
+* `faraday` for making HTTP requests
 
 # ENVs and their default fallbacks
 * REDIS_HOST: `localhost`

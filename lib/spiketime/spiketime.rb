@@ -4,7 +4,7 @@
 # public postman collection: https://www.getpostman.com/collections/16ba518999fbcff4c02c
 #
 
-require 'net/https'
+require 'faraday'
 require 'redis'
 require 'oj'
 
@@ -36,7 +36,7 @@ class Spiketime
     raise SpiketimeUnsupportedStateError, state unless STATE_CODES.keys.include?(state)
 
     @redis = setup_redis
-    @https = establish_https_connection
+    @https = establish_connection
     @force = force
     @state = state
   end
@@ -74,15 +74,12 @@ class Spiketime
               db: Spiketime.configuration.redis_db)
   end
 
-  def establish_https_connection
-    https = Net::HTTP.new('https://www.spiketime.de', 433)
-    https.use_ssl = true
-    https.verify_mode = OpenSSL::SSL::VERIFY_PEER
-    https
+  def establish_connection
+    Faraday.new(url: 'https://www.spiketime.de')
   end
 
   def get(path)
-    https.request(Net::HTTP::Get.new(path))
+    https.get(path)
   end
 
   def get_cached_holidays(state, year)

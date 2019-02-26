@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
+  s.add_dependency 'faraday', '~> 0.15.4'
   s.add_dependency 'oj', '~> 3.7', '>= 3.7.9'
   s.add_dependency 'redis', '~> 4.1'
 
