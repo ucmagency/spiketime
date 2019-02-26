@@ -46,7 +46,7 @@ class Spiketime
     cache = force ? nil : get_cached_holidays(state, year)
     return Oj.load(get_cached_holidays(state, year)) if cache
 
-    response = get("/feiertage/#{state}/#{year}")
+    response = get("feiertage/#{state}/#{year}")
     raise SpiketimeNetHTTPSError, response.code unless response.code == 200
 
     # store in format `YYYY-MM-DD`
@@ -82,7 +82,7 @@ class Spiketime
   end
 
   def get(path)
-    https.request(Net::HTTP::Get.new(path))
+    https.request(Net::HTTP::Get.new("/feiertagapi/#{path}"))
   end
 
   def get_cached_holidays(state, year)
