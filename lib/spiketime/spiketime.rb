@@ -44,7 +44,7 @@ class Spiketime
   # returns an array of dates, accepts a year (YYYY) as parameter
   def get_holidays(year = Time.current.year)
     cache = force ? nil : get_cached_holidays(state, year)
-    return Oj.load(get_cached_holidays(state, year)) if cache
+    return Oj.load(cache) if cache
 
     response = get("feiertage/#{state}/#{year}")
     raise SpiketimeNetHTTPSError, response.status unless response.status == 200
