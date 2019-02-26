@@ -1,8 +1,9 @@
+# rubocop:disable Metrics/BlockLength
 RSpec.describe Spiketime do
   let!(:redis) { MockRedis.new }
   let!(:response) do
     OpenStruct.new(body: File.read(__dir__ + '/fixtures/holidays_berlin_2019.json'),
-                   code: 200)
+                   status: 200)
   end
 
   before do
@@ -60,3 +61,4 @@ RSpec.describe Spiketime do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

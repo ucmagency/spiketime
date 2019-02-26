@@ -1,9 +1,18 @@
 # General Description
-This gem is light weight wrapper around the [spiketime API](https://www.spiketime.de/blog/spiketime-feiertag-api-feiertage-nach-bundeslandern/). It also offers a [postman collection](https://www.getpostman.com/collections/16ba518999fbcff4c02c).
+This gem is just a small wrapper around the [spiketime API](https://www.spiketime.de/blog/spiketime-feiertag-api-feiertage-nach-bundeslandern/). It also offers a [postman collection](https://www.getpostman.com/collections/16ba518999fbcff4c02c).
 
 # Dependencies
+## production
 * `oj` for parsing JSON
 * `redis` for caching
+* `faraday` for making HTTP requests
+
+## development & testing
+* `bundler`
+* `mock_redis`
+* `rake`
+* `rspec`
+* `rubocop`
 
 # ENVs and their default fallbacks
 * REDIS_HOST: `localhost`
@@ -11,7 +20,6 @@ This gem is light weight wrapper around the [spiketime API](https://www.spiketim
 * REDIS_DB: `5`
 
 # Usage
-
 ## Errors
 * Will raise `SpiketimeNetHTTPSError` returning the HTTP status code unless it is `200 OK`.
 * Will raise `SpiketimeUnsupportedStateError` if the `state` is not given using the official abbreviation
@@ -66,9 +74,16 @@ holiday = Spiketime.new(state: 'BE').holiday?('2019-04-19')
 true
 ```
 
-# build & install GEM locally
-if previously built, remove gem file: `rm spiketime-0.0.1.gem`
+# build & install gem locally
+remove previously build gem file, build gem file, install gem, enter ruby cli:
 ```
+rm spiketime-0.0.1.gem
 gem build spiketime.gemspec
 gem install spiketime-0.0.1.gem
+irb
+```
+inside irb require gem to use it:
+```ruby
+require 'spiketime'
+holiday = Spiketime.new(state: 'BE').holiday?('2019-04-19')
 ```
