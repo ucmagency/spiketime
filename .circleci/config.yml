@@ -1,0 +1,37 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+version: 2
+jobs:
+  build:
+    working_directory: ~/spiketime
+    docker:
+      - image: circleci/ruby:2.6.1
+        environment:
+        - BUNDLE_JOBS=3
+        - BUNDLE_RETRY=3
+        - BUNDLE_PATH=vendor/bundle
+      - image: redis
+    steps:
+      # 1 - checkout code
+      - checkout
+      - run:
+          name: Wait for redis
+          command: dockerize -wait tcp://localhost:6379 -timeout 1m
+      # Restore Cached Dependencies
+      - type: cache-restore
+        name: Restore bundle cache
+        key: your-app-name-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: Bundle install dependencies
+          command: bundle install --path vendor/bundle
+      # Cache Dependencies
+      - type: cache-save
+        name: Store bundle cache
+        key: your-app-name-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+      - run:
+          name: Test it
+          command: bundle exec rspec spec
