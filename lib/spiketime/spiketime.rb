@@ -60,7 +60,7 @@ class Spiketime
 
   # expects a date as input, either as Date object or string `YYYY-MM-DD`
   def holiday?(date = Date.current.to_s)
-    holidays = get_holidays(date.to_s[0..4])
+    holidays = get_holidays(date.to_s[0..3])
     holidays.include?(date.to_s)
   end
 
