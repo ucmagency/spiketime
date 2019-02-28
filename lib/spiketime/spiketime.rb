@@ -92,6 +92,10 @@ class Spiketime
   end
 
   def cache_holidays(state, year, holidays)
-    redis.set("spiketime:holidays:#{state}:#{year}", holidays)
+    begin
+      redis.set("spiketime:holidays:#{state}:#{year}", holidays)
+    rescue Redis::TimeoutError => ex
+      Spiketime.configuration.logger&.error(ex)
+    end
   end
 end
