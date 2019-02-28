@@ -87,7 +87,7 @@ class Spiketime
     begin
       redis.get("spiketime:holidays:#{state}:#{year}")
     rescue Redis::TimeoutError => ex
-      Spiketime.configuration.logger.error(ex)
+      Spiketime.configuration.logger&.error(ex)
     end
   end
 

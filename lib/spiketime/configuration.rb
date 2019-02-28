@@ -1,5 +1,3 @@
-require_relative 'logger'
-
 class Spiketime
   class << self
     attr_accessor :configuration
@@ -18,7 +16,7 @@ class Spiketime
       @redis_port   = 'REDIS_PORT'
       @redis_db     = 'REDIS_DB'
       @redis_driver = 'REDIS_DRIVER'
-      @logger       = ::Logger.new
+      @logger       = nil
     end
   end
 end
