@@ -71,7 +71,8 @@ class Spiketime
   def setup_redis
     Redis.new(host: Spiketime.configuration.redis_host,
               port: Spiketime.configuration.redis_port,
-              db: Spiketime.configuration.redis_db)
+              db: Spiketime.configuration.redis_db,
+              driver: Spiketime.configuration.redis_driver)
   end
 
   def establish_connection

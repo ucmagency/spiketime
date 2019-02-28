@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'faraday', '~> 0.15.4'
   s.add_dependency 'oj', '~> 3.7', '>= 3.7.9'
   s.add_dependency 'redis', '~> 4.1'
+  s.add_dependency 'hiredis', '~> 0.6.0'
 
   s.add_development_dependency 'bundler', '~> 1.17.2'
   s.add_development_dependency 'mock_redis', '~> 0.19.0'
