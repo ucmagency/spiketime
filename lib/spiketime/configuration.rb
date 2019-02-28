@@ -16,7 +16,7 @@ class Spiketime
       @redis_port   = 'REDIS_PORT'
       @redis_db     = 'REDIS_DB'
       @redis_driver = 'REDIS_DRIVER'
-      @logger       = SpikeTime::Logger.new
+      @logger       = ::SpikeTime::Logger.new
     end
   end
 end
