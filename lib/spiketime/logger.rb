@@ -1,7 +1,5 @@
-module SpikeTime
-  class Logger
-    def error(ex)
-      puts ex
-    end
-  end  
+class Logger
+  def error(ex)
+    puts ex
+  end
 end
