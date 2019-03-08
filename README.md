@@ -21,6 +21,7 @@ This gem is just a small wrapper around the [spiketime API](https://www.spiketim
 * REDIS_HOST: `localhost`
 * REDIS_PORT: `6379`
 * REDIS_DB: `5`
+* REDIS_DRIVER: `hiredis`
 
 # Usage
 ## Errors
