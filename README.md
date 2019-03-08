@@ -7,6 +7,7 @@ This gem is just a small wrapper around the [spiketime API](https://www.spiketim
 ## production
 * `oj` for parsing JSON
 * `redis` for caching
+* `hiredis`
 * `faraday` for making HTTP requests
 
 ## development & testing
