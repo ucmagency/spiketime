@@ -2,6 +2,7 @@
 
 # General Description
 This gem is just a small wrapper around the [spiketime API](https://www.spiketime.de/blog/spiketime-feiertag-api-feiertage-nach-bundeslandern/). It also offers a [postman collection](https://www.getpostman.com/collections/16ba518999fbcff4c02c).
+
 By default Spiketime is silent, but it let's you configure a logger, e.g.:
 
 ```ruby
@@ -13,7 +14,7 @@ config.logger = Logger.new($stderr)
 ## production
 * `oj` for parsing JSON
 * `redis` for caching
-* `hiredis`
+* `hiredis` as default redis-driver (configurable)
 * `faraday` for making HTTP requests
 
 ## development & testing
@@ -23,7 +24,7 @@ config.logger = Logger.new($stderr)
 * `rspec`
 * `rubocop`
 
-# ENVs and their default fallbacks
+# config/ENVs and their default fallbacks
 * REDIS_HOST: `localhost`
 * REDIS_PORT: `6379`
 * REDIS_DB: `5`
