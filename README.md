@@ -2,6 +2,12 @@
 
 # General Description
 This gem is just a small wrapper around the [spiketime API](https://www.spiketime.de/blog/spiketime-feiertag-api-feiertage-nach-bundeslandern/). It also offers a [postman collection](https://www.getpostman.com/collections/16ba518999fbcff4c02c).
+By default Spiketime is silent, but it let's you configure a logger, e.g.:
+
+```ruby
+config.logger = Rails.logger
+config.logger = Logger.new($stderr)
+```
 
 # Dependencies
 ## production
